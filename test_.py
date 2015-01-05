@@ -10,21 +10,23 @@ import os, time, random
 from multiprocessing import Process
 from multiprocessing import Pool
 
+
 def fork_():
     print 'Process %s start...' % os.getpid()
-    pid =  os.fork()
+    pid = os.fork()
     
     if pid == 0:
         print 'I am child process %s and my parent is %s' % (os.getpid(), os.getppid())
     else:
         print 'I am parent process %s and my child process is %s' % (os.getpid(), pid)
 
+
 def run_proc(name):
     print 'Run process %s ' % name
     start = time.time()
-    time.sleep(random.random() * 4)
+    time.sleep(random.random() * 5)
     end = time.time()
-    print "Process %s runs %0.2f" %(name, (end-start))
+    print "Process %s runs %0.2f" % (name, (end-start))
     
         
 def process_():
@@ -34,7 +36,8 @@ def process_():
     p.start()
     p.join()
     print 'All process are done'
-    
+
+
 def pool_():
     print 'Parent process %s' % os.getpid()
     p = Pool()
